@@ -31,6 +31,24 @@ public class Rocket : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        switch(collision.gameObject.tag)
+        {
+            case "Friendly":
+                // do nothing
+                print("Friendly");
+                break;
+            case "Fuel":
+                // do nothing
+                print("Fuel");
+                break;
+            default:
+                print("Dead");
+                break;
+        }
+    }
+
     private void ThrustInput()
     {
         // Boost Forward if space, Z or Arrow Up are pressed
