@@ -112,7 +112,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1203782136
+--- !u!1001 &65663553
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -132,7 +132,7 @@ PrefabInstance:
     - target: {fileID: 5381524195235277197, guid: e354d2d6635a295498843396cefb386a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.39
+      value: 2.2888205
       objectReference: {fileID: 0}
     - target: {fileID: 5381524195235277197, guid: e354d2d6635a295498843396cefb386a,
         type: 3}
@@ -179,42 +179,72 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.0000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.0000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161981744255380771, guid: e354d2d6635a295498843396cefb386a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000008940697
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e354d2d6635a295498843396cefb386a, type: 3}
---- !u!1 &1927415778 stripped
+--- !u!1 &543446476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5381524195235277196, guid: e354d2d6635a295498843396cefb386a,
     type: 3}
-  m_PrefabInstance: {fileID: 1203782136}
+  m_PrefabInstance: {fileID: 65663553}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &1927415779
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927415778}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1927415781
+--- !u!114 &543446477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927415778}
+  m_GameObject: {fileID: 543446476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52f7c6d301df8a54eb8498b37703fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &543446478
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543446476}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 32
+  m_CollisionDetection: 0
 --- !u!1001 &2761548652972248129
 PrefabInstance:
   m_ObjectHideFlags: 0
