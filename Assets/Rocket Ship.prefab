@@ -343,8 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f7c6d301df8a54eb8498b37703fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 250
-  mainThrust: 820
+  rcsThrust: 218.1
+  mainThrust: 1012.05
 --- !u!1001 &5102707320189945991
 PrefabInstance:
   m_ObjectHideFlags: 0
