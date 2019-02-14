@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -11,11 +9,16 @@ public class Rocket : MonoBehaviour
     private new Rigidbody rigidbody;
     AudioSource boostAudioSource;
 
+    enum State {  Alive, Dying, Transcending };
+    State state = State.Alive;
+
+    private float transcendingTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        boostAudioSource = GetComponent<AudioSource>();
+        boostAudioSource = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -26,27 +29,44 @@ public class Rocket : MonoBehaviour
 
     private void ProcessInput()
     {
-        ThrustInput();
-        HandleRotationInput();
-
+        if(!state.Equals(State.Dying))
+        {
+            ThrustInput();
+            HandleRotationInput();
+        }
+        else
+            boostAudioSource.Stop();
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive) return;
+
         switch(collision.gameObject.tag)
         {
             case "Friendly":
                 // do nothing
-                print("Friendly");
                 break;
-            case "Fuel":
-                // do nothing
-                print("Fuel");
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextLevel", transcendingTime); // todo parameterise time
                 break;
             default:
-                print("Dead");
+                state = State.Dying;
+                Invoke("LoadFirstLevel", transcendingTime);
                 break;
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
+        // todo allow for more than 2 levels
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void ThrustInput()
