@@ -55,7 +55,9 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z))
         {
             float thrustThisFrame = mainThrust * Time.deltaTime;
-            rigidbody.AddRelativeForce(Vector3.up * thrustThisFrame);
+            //rigidbody.AddRelativeForce(Vector3.up * thrustThisFrame);
+            rigidbody.AddRelativeForce(Vector3.up * mainThrust);
+
 
             if (!boostAudioSource.isPlaying)
             {
