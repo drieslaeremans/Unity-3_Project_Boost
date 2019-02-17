@@ -135,11 +135,20 @@ public class Rocket : MonoBehaviour
 
     private void HandleRotationInput()
     {
-        // Take manual control of rotation
-        rigidbody.freezeRotation = true;
-
         float rotationThisFrame = rcsThrust * Time.deltaTime;
 
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            RotateManually(rotationThisFrame);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            RotateManually(-rotationThisFrame);
+        }        
+    }
+
+    private void RotateManually(float rotationThisFrame)
+    {
         /* 
                  * Rotate around Z-axis (forward) if specified button is pressed
                  * Rotation is set at 30 degrees per second
@@ -147,18 +156,8 @@ public class Rocket : MonoBehaviour
                  * Time.deltaTime => amount of seconds the previous frame took to render, 
                  * using this makes sure speed op rotation stays equal on all framerates
                  */
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            //transform.Rotate((Vector3.forward * Time.deltaTime) * 30);
-            transform.Rotate(Vector3.forward * rotationThisFrame);
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            //transform.Rotate((-Vector3.forward * Time.deltaTime) * 30);
-            transform.Rotate(-Vector3.forward * rotationThisFrame);
-        }
-
-        // resume fysics control of rotation
+        rigidbody.freezeRotation = true;
+        transform.Rotate(Vector3.forward * rotationThisFrame);
         rigidbody.freezeRotation = false;
     }
 
