@@ -59,7 +59,6 @@ public class Rocket : MonoBehaviour
         switch(collision.gameObject.tag)
         {
             case "Friendly":
-                // do nothing
                 break;
             case "Finish":
                 StartSuccessSequence();
@@ -90,14 +89,21 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        successParticles.Stop();
-        SceneManager.LoadScene(1);
-        // todo allow for more than 2 levels
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if(nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            LoadFirstLevel();
+        }
     }
 
     private void LoadFirstLevel()
     {
-        deathParticles.Stop();
         SceneManager.LoadScene(0);
     }
 
