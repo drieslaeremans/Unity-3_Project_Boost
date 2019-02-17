@@ -5,9 +5,14 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 200f;
     [SerializeField] float mainThrust = 800f;
+
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip successSound;
     [SerializeField] AudioClip deathSound;
+
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem deathParticles;
 
     private new Rigidbody rigidbody;
     AudioSource audioSource;
@@ -62,6 +67,7 @@ public class Rocket : MonoBehaviour
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(successSound);
+        successParticles.Play();
         Invoke("LoadNextLevel", transcendingTime);
     }
 
@@ -70,17 +76,20 @@ public class Rocket : MonoBehaviour
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(deathSound);
+        deathParticles.Play();
         Invoke("LoadFirstLevel", transcendingTime);
     }
 
     private void LoadNextLevel()
     {
+        successParticles.Stop();
         SceneManager.LoadScene(1);
         // todo allow for more than 2 levels
     }
 
     private void LoadFirstLevel()
     {
+        deathParticles.Stop();
         SceneManager.LoadScene(0);
     }
 
@@ -92,7 +101,10 @@ public class Rocket : MonoBehaviour
             ApplyThrust();
         }
         else
+        {
             audioSource.Stop();
+            mainEngineParticles.Stop();
+        }
     }
 
     private void ApplyThrust()
@@ -102,7 +114,9 @@ public class Rocket : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
-        }   
+        }
+
+        mainEngineParticles.Play();
     }
 
     private void HandleRotationInput()
