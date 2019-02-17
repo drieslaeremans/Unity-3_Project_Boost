@@ -5,6 +5,7 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 200f;
     [SerializeField] float mainThrust = 800f;
+    [SerializeField] float levelLoadDelay = 1f;
 
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip successSound;
@@ -20,7 +21,7 @@ public class Rocket : MonoBehaviour
     enum State {  Alive, Dying, Transcending };
     State state = State.Alive;
 
-    private float transcendingTime = 1f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(successSound);
         successParticles.Play();
-        Invoke("LoadNextLevel", transcendingTime);
+        Invoke("LoadNextLevel", levelLoadDelay);
     }
 
     private void StartDeathSequence()
@@ -77,7 +78,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(deathSound);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", transcendingTime);
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void LoadNextLevel()
