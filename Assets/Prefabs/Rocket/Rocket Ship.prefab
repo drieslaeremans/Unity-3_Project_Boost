@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5381524195235277196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.077378, z: 0.0000000071526}
-  m_LocalScale: {x: 0.90018004, y: 0.90018004, z: 0.90018004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.82816565, y: 0.82816565, z: 0.82816565}
   m_Children:
   - {fileID: 5381524194784800472}
   - {fileID: 5381524194709809201}
@@ -164,8 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f7c6d301df8a54eb8498b37703fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 220
-  mainThrust: 1200
+  rcsThrust: 273
+  mainThrust: 1318
+  levelLoadDelay: 1
   mainEngine: {fileID: 8300000, guid: 8ab1e39ff175ba1419f0eaf73065652b, type: 3}
   successSound: {fileID: 8300000, guid: 0aeeea28dda4ddf4495aa4645355e710, type: 3}
   deathSound: {fileID: 8300000, guid: 572bc0a32bf225c42822d8c8124c81e2, type: 3}
